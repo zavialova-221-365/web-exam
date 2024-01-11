@@ -105,7 +105,35 @@
       </div>
     </div>
   </div>
+  <div class="container mt-5">
+    <form id="filterForm">
+      <div class="mb-3">
+        <h1>Список маршрутов</h1>
+      </div>
+      <div class="mb-3">
+        <label for="searchInput" class="form-label">Поиск по названию:</label>
+        <input type="text" class="form-control" id="searchInput">
+      </div>
+      <button type="submit" class="btn btn-primary" id="searchButton">Применить</button>
+    </form>
+    <br>
+    <table class="table table-bordered" id="routesTable">
+      <th scope="col">Название</th>
+      <th scope="col">Описание</th>
+      <th scope="col">Достопримечательность</th>
+      <th scope="col"></th>
 
+      <tbody id="routesTableBody">
+        <!-- Здесь будут строки с данными -->
+        <!-- ... -->
+      </tbody>
+    </table>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination" id="pagination" style="justify-content: center;">
+        <!-- Сюда будут добавлены элементы пагинации -->
+      </ul>
+    </nav>
+  </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="./js/main.js"></script>
 </body>
