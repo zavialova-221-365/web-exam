@@ -127,4 +127,33 @@ document.addEventListener('DOMContentLoaded', function () {
 
         createPagination();
     }
+    function createPagination() {
+
+        pagination.innerHTML = '';
+        const totalPages = Math.ceil(allRoutesData.length / itemsPerPage);
+
+        for (let i = 1; i <= totalPages; i++) {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.classList.add('page-link');
+            a.href = '#';
+            a.textContent = i;
+
+            if (i === currentPage) {
+                li.classList.add('page-item', 'active');
+            } else {
+                li.classList.add('page-item');
+            }
+
+            a.addEventListener('click', function (event) {
+                event.preventDefault();
+                currentPage = i;
+                updateTable(currentPage);
+            });
+
+            li.appendChild(a);
+            pagination.appendChild(li);
+        }
+    }
+
 });
