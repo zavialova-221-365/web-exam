@@ -71,5 +71,60 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Пересчитываем и создаем пагинацию для отфильтрованных данных
     });
+    function updateTable(page) {
 
+        routesTableBody.innerHTML = '';
+        const startIndex = (page - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        const routesData = allRoutesData.slice(startIndex, endIndex);
+
+        routesData.forEach(route => {
+            const row = document.createElement('tr');
+            const nameCell = document.createElement('td');
+            const descriptionCell = document.createElement('td');
+            const objectsCell = document.createElement('td');
+            const buttonCell = document.createElement('td');
+            const selectButton = document.createElement('button');
+
+            nameCell.textContent = route.name;
+            descriptionCell.textContent = route.description;
+            objectsCell.textContent = route.mainObject;
+
+            selectButton.textContent = 'Выбрать';
+            selectButton.classList.add('btn', 'btn-secondary', 'selectRouteBtn');
+            selectButton.addEventListener('click', function () {
+                row.classList.toggle('selected');
+                const routeId = route.id;
+                const routeName = route.name;
+                loadGuidesForRoute(routeId, routeName);
+                populateLanguagesSelect(routeId);
+                updateSelectedRoute(routeName);
+            });
+
+            buttonCell.appendChild(selectButton);
+
+            row.appendChild(nameCell);
+            row.appendChild(descriptionCell);
+            row.appendChild(objectsCell);
+            row.appendChild(buttonCell);
+
+            routesTableBody.appendChild(row);
+        });
+
+        createPagination();
+
+
+        const searchInput = document.getElementById('searchInput').value.toLowerCase();
+
+        // Фильтрация данных по поисковому запросу
+        const filteredRoutesData = allRoutesData.filter(route =>
+            route.name.toLowerCase().includes(searchInput)
+        );
+
+        // Отображение только отфильтрованных данных на странице
+
+        // Остальной код отображения данных остается без изменений
+
+        createPagination();
+    }
 });
