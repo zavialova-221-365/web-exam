@@ -1,0 +1,28 @@
+h1, h2, h3, h4 {
+    color: purple;
+}
+
+body{
+    color: goldenrod !important;
+}
+.btn-secondary{
+    background-color: lightyellow !important;
+    border-color: lightyellow !important;
+    color: red !important;
+}
+
+.alert-primary{
+    background-color: orange !important;
+    border-color: orange !important;
+    color: white !important;
+}
+
+.page-link{
+    background-color: orange !important;
+    /* border-color: brown !important; */
+    color: white !important;
+}
+
+.bg-dark{
+    background-color: brown !important;
+}
